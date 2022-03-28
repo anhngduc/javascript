@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning about node</title>
+</head>
+<body>
+    <h1 id="title">Todo Tracker</h1>
+    <form>
+        <input type="text" id="user-todo" placeholder="New todo"><br>
+    </form>
+    <h2 id="todo-header">Todos</h2>
+    <ul>
+        <li class="todos">Coffee</li>
+        <li class="todos">Tea</li>
+        <li class="todos">Milk</li>
+    </ul>
+    <button id="clear">Clear all</button>
+    <script>
+        // Create variables
+        var form = document.querySelector('form');
+        var input = document.getElementById('user-todo');
+        var clearbtn = document.querySelector('button');
+        var todosList = document.querySelector('ul');
+    
+        clearbtn.addEventListener('click', function(){
+            while (todosList.firstChild){
+                todosList.removeChild(todosList.firstChild);
+            }
+            console.log('remove all child item');
+        })
+
+        form.addEventListener('submit',function(e){
+            e.preventDefault();
+            console.log('submit ' + input.value);
+            todoMaker(input.value);
+            input.value = '';
+        })
+
+        var todoMaker = function(text){
+            var lschild = document.createElement('li');
+            lschild.textContent = input.value;
+            todosList.appendChild(lschild);
+        }
+
+       
+    </script>
+</body>
+</html>
